@@ -1,5 +1,6 @@
 
 function parseCount(count){
+    
     if (isNaN(Number.parseInt(count))) {
         throw new Error("Невалидное значение");
     }
@@ -9,8 +10,8 @@ function parseCount(count){
 function validateCount(count){
     try {
         return parseCount(count)
-    } catch(Error) {
-        console.log(Error);
+    } catch(error) {
+        return error;
     }
 }
 
@@ -21,36 +22,39 @@ console.log(validateCount("asfer"));
 
 class Triangle{
 
-    getPerimeter(){
-        let P;
-
-        P = a + b + c;
-        return P;
-    }
-
-    getArea(){
-        let S;
-        let p;
-
-        p = (a + b + c) / 2
-        S = (Math.sqrt(p * (p - a)*(p - b)*(p - c))).toFixed(3);
-        
-        return S;
-    }
     constructor(a, b, c){
         this.a = a;
         this.b = b;
         this.c = c;
         let sum = a + b;
-        if (sum < c ) {
+        let sum1 = a + c;
+        let sum2 = b + c;
+        if (sum < c ||  sum1 < b || sum2 < a) {
             throw new Error("Треугольник с такими сторонами не существует");
         }
        
     }
+
+    getPerimeter(){
+        this.perimeter = a + b + c;
+        return this.perimeter;
+    }
+
+    getArea(){
+        this.s = Number(Math.sqrt(p * (p - a)*(p - b)*(p - c))).toFixed(3);
+        this.p = this.perimeter / 2;
+
+        return this.s;
+    }
+    
     
 }
 
 function getTriangle(a, b, c) {
+    this.a = a;
+    this.b = b;
+    this.c = c;
+    
     try {
         return new Triangle;
     } catch(Error) {
