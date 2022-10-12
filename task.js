@@ -32,34 +32,28 @@ class Triangle{
         if (sum < c ||  sum1 < b || sum2 < a) {
             throw new Error("Треугольник с такими сторонами не существует");
         }
-       
     }
 
     getPerimeter(){
-        this.perimeter = a + b + c;
-        return this.perimeter;
+        return this.a + this.b + this.c;
     }
 
     getArea(){
-        this.s = Number(Math.sqrt(p * (p - a)*(p - b)*(p - c))).toFixed(3);
-        this.p = this.perimeter / 2;
-
-        return this.s;
+        const p = getPerimeter() / 2;
+       
+        return Number(Math.sqrt(p * (p - this.a)*(p - this.b)*(p - this.c))).toFixed(3);
     }
     
     
 }
 
 function getTriangle(a, b, c) {
-    this.a = a;
-    this.b = b;
-    this.c = c;
     
     try {
-        return new Triangle;
+        return new Triangle(a, b, c);
     } catch(Error) {
         console.log("Ошибка! Треугольник не существует");
     }
 }
 
-getTriangle(3, 5, 7)
+getTriangle(1, 3, 100)
